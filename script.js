@@ -1,7 +1,4 @@
-import $ from"jquery";
-
-const img =  $("#1");
-const images = $("img");
+import $ from "jquery";
 
 $(document).ready(function() {
     $(".list-item:first").hover(function() {
@@ -19,28 +16,31 @@ $(document).ready(function() {
         }, 2000);
     });
 
+    $(".list-item:eq(3)").on("click", function() {
+        $(".image:even").fadeToggle("fast");
+    });
+
     // Image Animation
 
+    const img = $("#1");
+    const images = $(".image");
     let imageAnimation;
-    img.addEventListener("click", () => {
-    if (!imageAnimation) {
-    imageAnimation = images[0].animate([
-            {transform: "translateY(0) rotate(0)",
-            filter: "opacity(100%)"},
-            {transform: "translateY(100px) rotate(180deg)",
-            filter: "opacity(50%)"},
-            {transform: "translateY(-100px) rotate(270deg)",
-            filter: "opacity(75%)"},
-            {transform: "translateY(0) rotate(360deg)",
-            filter: "opacity(100%)"}
-        ], {
-            duration: 3000,
-            iterations: Infinity
-        });
-    } else if (imageAnimation.playState === "paused") {
-        imageAnimation.play();
-    } else {
-        imageAnimation.pause();
-    }
+
+    img.on("click", function() {
+        if (!imageAnimation) {
+            imageAnimation = images[0].animate([
+                { transform: "translateY(0) rotate(0)", filter: "opacity(100%)" },
+                { transform: "translateY(100px) rotate(180deg)", filter: "opacity(50%)" },
+                { transform: "translateY(-100px) rotate(270deg)", filter: "opacity(75%)" },
+                { transform: "translateY(0) rotate(360deg)", filter: "opacity(100%)" }
+            ], {
+                duration: 3000,
+                iterations: Infinity
+            });
+        } else if (imageAnimation.playState === "paused") {
+            imageAnimation.play();
+        } else {
+            imageAnimation.pause();
+        }
     });
 });
