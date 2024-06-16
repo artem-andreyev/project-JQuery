@@ -5,9 +5,9 @@ $(document).ready(function() {
         $(this).toggleClass("active");
     });
 
-    $(".list-item:eq(2)").on("click", function() {
-        $(".image:even").fadeToggle("slow");
-    });
+    // $(".list-item:eq(2)").on("click", function() {
+    //     $(".image:even").fadeToggle("slow");
+    // });
 
     $(".list-item:eq(4)").on("click", function() {
         $(".image:odd").animate({
@@ -16,17 +16,12 @@ $(document).ready(function() {
         }, 2000);
     });
 
-    $(".list-item:eq(3)").on("click", function() {
-        $(".image:even").fadeToggle("fast");
-    });
-
     // Image Animation
 
-    const img = $("#1");
     const images = $(".image");
     let imageAnimation;
 
-    img.on("click", function() {
+    $(".list-item:first").on("click", function() {
         if (!imageAnimation) {
             imageAnimation = images[0].animate([
                 { transform: "translateY(0) rotate(0)", filter: "opacity(100%)" },
